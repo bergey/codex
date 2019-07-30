@@ -4,7 +4,6 @@ version: 0
 synopsis: Language Server Protocol
 homepage: https://github.com/ekmett/codex/tree/master/language-server#readme
 license: BSD-2-Clause OR Apache-2.0
-license-file: LICENSE.md
 author: Edward Kmett
 maintainer: Edward Kmett <ekmett@gmail.com>
 copyright: Copyright (c) 2017-2019 Edward Kmett

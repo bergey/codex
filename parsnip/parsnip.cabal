@@ -15,9 +15,6 @@ build-type: Simple
 extra-doc-files:
   README.md,
   CHANGELOG.md
-data-files:
-  shaders/*.frag,
-  shaders/*.vert
 extra-source-files:
   cbits/*.h
 
