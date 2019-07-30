@@ -1,4 +1,5 @@
 { nixpkgs ? import ./.nix/nixpkgs.nix
+
 , compiler ? "default"
 }:
 let
@@ -53,11 +54,13 @@ let
     bidi-icu           = ./bidi-icu;
     const              = ./const;
     freetype           = ./freetype;
-    harfbuzz-opentype  = ./harfbuzz-opentype;
+    # harfbuzz-opentype  = ./harfbuzz-opentype;
     hkd                = ./hkd;
-    primitive-statevar = ./primitive-statevar;
+    # primitive-statevar = ./primitive-statevar;
+    primitive-extras = ./primitive-extras;
     primitive-ffi      = ./primitive-ffi;
-    primitive-unlift   = ./primitive-unlift;
+    # primitive-unlift   = ./primitive-unlift;
+    parsnip = ./parsnip;
     ptrdiff            = ./ptrdiff;
     weak               = ./weak;
     smawk              = ./smawk;
@@ -82,13 +85,15 @@ let
   #
   recursiveSrcs = rec {
     fontconfig          = modHaskPkgs.callCabal2nix "fontconfig" ./fontconfig {};
-    fontconfig-freetype = modHaskPkgs.callCabal2nix "fontconfig-freetype" ./fontconfig-freetype {};
+    # fontconfig-freetype = modHaskPkgs.callCabal2nix "fontconfig-freetype" ./fontconfig-freetype {};
     glow                = modHaskPkgs.callCabal2nix "glow" ./glow {};
 
-    harfbuzz            = modHaskPkgs.callCabal2nix "harfbuzz" ./harfbuzz {};
-    harfbuzz-icu        = modHaskPkgs.callCabal2nix "harfbuzz-icu" ./harfbuzz-icu { harfbuzz = harfbuzz; };
-    harfbuzz-subset     = modHaskPkgs.callCabal2nix "harfbuzz-subset" ./harfbuzz-subset { harfbuzz = harfbuzz; };
-    harfbuzz-freetype   = modHaskPkgs.callCabal2nix "harfbuzz-freetype" ./harfbuzz-freetype { harfbuzz = harfbuzz; };
+    harfbuzz            = modHaskPkgs.callCabal2nix "harfbuzz" ./harfbuzz {
+        glow = glow;
+    };
+    # harfbuzz-icu        = modHaskPkgs.callCabal2nix "harfbuzz-icu" ./harfbuzz-icu { harfbuzz = harfbuzz; };
+    # harfbuzz-subset     = modHaskPkgs.callCabal2nix "harfbuzz-subset" ./harfbuzz-subset { harfbuzz = harfbuzz; };
+    # harfbuzz-freetype   = modHaskPkgs.callCabal2nix "harfbuzz-freetype" ./harfbuzz-freetype { harfbuzz = harfbuzz; };
     engine              = modHaskPkgs.callCabal2nix "engine" ./engine { glow = glow; };
     ui                  = modHaskPkgs.callCabal2nix "ui" ./ui {
       fontconfig   = fontconfig;
