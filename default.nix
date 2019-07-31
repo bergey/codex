@@ -74,6 +74,7 @@ let
       # no-caching hitting sadness :<
       gl    = pkgs.haskell.lib.doJailbreak hsuper.gl;
       fixed = hself.callCabal2nix "fixed" (import ./.nix/fixed.nix) {};
+      sdl2 = pkgs.haskell.lib.dontCheck (hself.callHackage "sdl2" "2.5.0.0" {});
     };
   };
 
